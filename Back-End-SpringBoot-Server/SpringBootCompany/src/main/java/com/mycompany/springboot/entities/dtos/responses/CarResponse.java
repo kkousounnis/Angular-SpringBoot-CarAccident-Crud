@@ -9,12 +9,14 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarResponse extends Response {
 
-    private List<Car> employees;
-    private Car employee;
-    private Integer employeeId;
+    private List<Car> cars;
+    
+    private Car car;
+    
+    private Integer carId;
 
-    public CarResponse(List<Car> employees) {
-        this.employees = employees;
+    public CarResponse(List<Car> cars) {
+        this.cars = cars;
     }
 
 }

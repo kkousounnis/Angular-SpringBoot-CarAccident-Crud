@@ -23,8 +23,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void save(Car employee) {
-        dao.save(employee);
+    public void save(Car car) {
+        dao.save(car);
     }
 
     @Override

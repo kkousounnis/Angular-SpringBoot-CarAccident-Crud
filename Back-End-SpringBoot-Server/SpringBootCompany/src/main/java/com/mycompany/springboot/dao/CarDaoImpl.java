@@ -10,26 +10,26 @@ import com.mycompany.springboot.repositories.CarRepository;
 public class CarDaoImpl implements CarDao {
 
     @Autowired
-    private CarRepository employeeRepository;
+    private CarRepository carRepository;
 
     @Override
     public List<Car> get() {
-        return employeeRepository.findAll();
+        return carRepository.findAll();
     }
 
     @Override
     public Car get(int id) {
-        return employeeRepository.findById(id).get();
+        return carRepository.findById(id).get();
     }
 
     @Override
     public void save(Car employee) {
-        employeeRepository.save(employee);
+        carRepository.save(employee);
     }
 
     @Override
     public void delete(int id) {
-        employeeRepository.deleteById(id);
+        carRepository.deleteById(id);
     }
 
 }

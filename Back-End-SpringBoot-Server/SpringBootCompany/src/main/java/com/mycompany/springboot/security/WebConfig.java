@@ -1,17 +1,24 @@
 package com.mycompany.springboot.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
-    @Override
+    @Value("cors.allowedOrings")
+    private String allowedOrigins;
+
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
-    }
+        final long MAX_AGE_SECS = 3600;
 
+        registry.addMapping("/**")
+                .allowedOrigins(allowedOrigins)
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .maxAge(MAX_AGE_SECS);
+    }
+   
 }

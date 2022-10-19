@@ -19,55 +19,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class CarController {
 
     @Autowired
-    private CarServiceImpl employeeServiceImpl;
+    private CarServiceImpl carServiceImpl;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/employee")
+    @GetMapping("/car")
     public List<Car> get() {
 
-        return (new CarResponse(employeeServiceImpl.get()).getEmployees());
+        return (new CarResponse(carServiceImpl.get()).getCars());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/employee")
-    public Car save(@RequestBody CarRequest employee) {  //to change to CarRequest issue with angular    
-        System.out.println(employee.getEmployee());
-        employeeServiceImpl.save(employee.getEmployee());
-        return (employee.getEmployee());
+    
+    @PostMapping("/car")
+    public Car save(@RequestBody CarRequest car) {  //to change to CarRequest issue with angular    
+        
+        carServiceImpl.save(car.getCar());
+        return (car.getCar());
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/employee/{id}")
+    
+    @GetMapping("/car/{id}")
     public ResponseEntity<Car> get(@PathVariable int id) {
-        Car employee = employeeServiceImpl.get(id);
-        return ResponseEntity.ok(employee);
+        Car car = carServiceImpl.get(id);
+        return ResponseEntity.ok(car);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @DeleteMapping("/employee/{id}")
+    
+    @DeleteMapping("/car/{id}")
     public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) {
-        employeeServiceImpl.delete(id);
+        carServiceImpl.delete(id);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    
     @PutMapping("/employee/{id}")
     public ResponseEntity<Car> update(@PathVariable int id, @RequestBody Car employeeDetails) {
-        Car employee = employeeServiceImpl.get(id);
+        Car car = carServiceImpl.get(id);
 
-        employee.setFirstName(employeeDetails.getFirstName());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setEmailId(employeeDetails.getEmailId());
-
-        employeeServiceImpl.save(employee);
-        return ResponseEntity.ok(employee);
+        carServiceImpl.save(car);
+        return ResponseEntity.ok(car);
     }
 
 }

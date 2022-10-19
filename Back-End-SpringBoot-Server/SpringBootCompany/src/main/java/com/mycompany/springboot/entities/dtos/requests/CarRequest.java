@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CarRequest {
 
-    private Car employee;
+    private Car car;
 }
