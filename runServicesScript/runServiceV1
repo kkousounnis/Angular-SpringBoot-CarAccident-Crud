@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#Command to make script universal in linux command line is -> export PATH=$PATH:~/local/bin/runCoodleSpringServicev1
+#Change to your home directory
+cd $home
+
+#Run war project 
+java -jar Github/Angular-SpringBoot-CarAccident-Crud/Back-End-SpringBoot-Server/SpringBootCompany/target/SpringBootCompany-0.0.1-SNAPSHOT.war

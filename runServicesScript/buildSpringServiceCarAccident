@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Command to make script universal in linux command line is -> export PATH=$PATH:~/local/bin/buildSpringServiceCarAccident
+#Change to your home directory
+cd $home
+
+cd Github/Angular-SpringBoot-CarAccident-Crud/Back-End-SpringBoot-Server/SpringBootCompany
+#First we build the project 
+mvn clean install 
