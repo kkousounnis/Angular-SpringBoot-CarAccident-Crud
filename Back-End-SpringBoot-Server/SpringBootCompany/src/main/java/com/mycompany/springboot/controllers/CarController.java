@@ -66,7 +66,6 @@ public class CarController {
     public ResponseEntity<Car> update(@PathVariable int id, @RequestBody CarRequest employeeDetails) {
         Car car = carServiceImpl.get(id);
         employeeDetails.getCar().setId(car.getId());
-        System.err.println("Errors" + employeeDetails.getCar().getBrand());
         carServiceImpl.save(employeeDetails.getCar());
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
