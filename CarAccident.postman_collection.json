@@ -23,6 +23,60 @@
 				"url": "http://localhost:8080/api/car"
 			},
 			"response": []
+		},
+		{
+			"name": "CarAccidentLIst",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/car"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCarById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/car/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Car by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/car/1"
+			},
+			"response": []
+		},
+		{
+			"name": "UpateCarAccident",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"car\": {\n        \"brand\": \"Audi\",\n        \"cost\": \"100001\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/car/2"
+			},
+			"response": []
 		}
 	]
 }
