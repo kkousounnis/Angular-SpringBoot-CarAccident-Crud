@@ -27,7 +27,7 @@ public class MechanicController {
 
     @GetMapping("/mechanic")
     public List<Mechanic> get() {
-
+        
         return (new MechanicResponse(MechanicServiceImpl.get()).getMechanics());
     }
 
@@ -41,7 +41,6 @@ public class MechanicController {
             Car carCreated = carServiceImpl.save(car);
             //update car accident id
             mechanic.getMechanic().getCarAccidents().get(index).setId(carCreated.getId());
-            System.err.println("Update list of car accident" + mechanic.getMechanic().getCarAccidents().get(index));
             index++;
         }
         MechanicServiceImpl.save(mechanic.getMechanic());
@@ -57,20 +56,20 @@ public class MechanicController {
     }
 
 
-    @DeleteMapping("/mechanic/{id}")
-    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) {
-        MechanicServiceImpl.delete(id);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return new ResponseEntity("Deleted with success.", HttpStatus.OK);
-    }
+//    @DeleteMapping("/mechanic/{id}")
+//    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) {
+//        MechanicServiceImpl.delete(id);
+//        Map<String, Boolean> response = new HashMap<>();
+//        response.put("deleted", Boolean.TRUE);
+//        return new ResponseEntity("Deleted with success.", HttpStatus.OK);
+//    }
 
 
-    @PutMapping("/mechanic/{id}")
-    public ResponseEntity<Mechanic> update(@PathVariable int id, @RequestBody MechanicRequest mechanicDetails) {
-        Mechanic Mechanic = MechanicServiceImpl.get(id);
-        mechanicDetails.getMechanic().setMechanicId(Mechanic.getMechanicId());
-        MechanicServiceImpl.save(mechanicDetails.getMechanic());
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
-    }
+//    @PutMapping("/mechanic/{id}")
+//    public ResponseEntity<Mechanic> update(@PathVariable int id, @RequestBody MechanicRequest mechanicDetails) {
+//        Mechanic Mechanic = MechanicServiceImpl.get(id);
+//        mechanicDetails.getMechanic().setMechanicId(Mechanic.getMechanicId());
+//        MechanicServiceImpl.save(mechanicDetails.getMechanic());
+//        return new ResponseEntity(HttpStatus.NO_CONTENT);
+//    }
 }
