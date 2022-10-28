@@ -9,7 +9,7 @@ public interface CarService {
 
     Car get(int id);
 
-    void save(Car car);
+    Car save(Car car);
 
     void delete(int id);
 
