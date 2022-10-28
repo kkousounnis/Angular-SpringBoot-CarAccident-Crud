@@ -23,8 +23,8 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void save(Car employee) {
-        carRepository.save(employee);
+    public Car save(Car employee) {
+        return (carRepository.save(employee));
     }
 
     @Override
