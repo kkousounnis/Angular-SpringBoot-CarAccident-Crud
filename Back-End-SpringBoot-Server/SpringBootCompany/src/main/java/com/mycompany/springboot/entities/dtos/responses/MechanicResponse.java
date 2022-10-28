@@ -1,22 +1,23 @@
 package com.mycompany.springboot.entities.dtos.responses;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.mycompany.springboot.entities.Car;
-import java.util.List;
+import com.mycompany.springboot.entities.Mechanic;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CarResponse extends Response {
+public class MechanicResponse extends Response {
 
-    private List<Car> cars;
-    
-    private Car car;
-    
-    private Integer carId;
+    private List<Mechanic> mechanics;
 
-    public CarResponse(List<Car> cars) {
-        this.cars = cars;
+    private Mechanic mechanic;
+
+    private Integer mechanicId;
+
+    public MechanicResponse(List<Mechanic> mechanics) {
+        this.mechanics = mechanics;
     }
 
 }
