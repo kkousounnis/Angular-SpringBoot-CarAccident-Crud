@@ -12,6 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MechanicRequest {
 
-
     private Mechanic mechanic;
 }
