@@ -19,12 +19,11 @@ public class Mechanic implements Serializable {
     private String mechanicName;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, targetEntity = Car.class)
-    @JoinTable(name = "mechanics_cars",
-            joinColumns = {@JoinColumn(name = "mechanic_id")},
-            inverseJoinColumns = {@JoinColumn(name = "car_id")})
+    @JoinTable(name = "mechanics_cars", joinColumns = {@JoinColumn(name = "mechanic_id")}, inverseJoinColumns = {@JoinColumn(name = "car_id")})
     private List<Car> carAccidents;
 
     @Transient
+    @JsonIgnore
     private float avgSpeed;
 
     public Mechanic() {
@@ -35,6 +34,14 @@ public class Mechanic implements Serializable {
         this.mechanicName = mechanicName;
         this.carAccidents = carAccidents;
         this.avgSpeed = avgSpeed;
+    }
+
+    public static float calculateAvgSpeed(List<Car> carAccidents) {
+        int sum = 0;
+        for (Car car : carAccidents) {
+            sum = sum + car.getSpeed();
+        }
+        return sum / carAccidents.size();
     }
 
     public Integer getMechanicId() {
