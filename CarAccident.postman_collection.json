@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"brand\":\"BMW\",\n    \"cost\":\"100000\"\n}",
+					"raw": "{\n    \"car\": {\n        \"brand\": \"Audi\",\n        \"cost\": \"35000\",\n        \"speed\": 134\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,6 +75,33 @@
 					}
 				},
 				"url": "http://localhost:8080/api/car/2"
+			},
+			"response": []
+		},
+		{
+			"name": "MechanicPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mechanic\": {\n        \"mechanicName\": \"George\",\n        \"carAccidents\": [\n            {\n                \"brand\": \"Audi\",\n                \"cost\": \"14000\",\n                \"speed\": 134\n            },\n            {\n                \"brand\": \"Mercedes\",\n                \"cost\": \"34000\",\n                \"speed\": 178\n            },\n            {\n                \"brand\": \"VolksWagen\",\n                \"cost\": \"27000\",\n                \"speed\": 89\n            },\n            {\n                \"brand\": \"Fiat\",\n                \"cost\": \"7000\",\n                \"speed\": 83\n            }\n\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mechanic"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMechanics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/mechanic"
 			},
 			"response": []
 		}
