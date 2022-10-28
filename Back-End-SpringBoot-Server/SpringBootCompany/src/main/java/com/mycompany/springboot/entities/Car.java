@@ -10,12 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "car_accidents")
+@Table(name = "cars")
 public class Car implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto increment
-    @Basic(optional = false)
     @Column(nullable = false)
     private Integer id;
 
@@ -25,13 +24,17 @@ public class Car implements Serializable {
     @Column
     private int cost;
 
+    @Column
+    private int speed;
+
     public Car() {
     }
 
-    public Car(Integer id, String brand, int cost) {
+    public Car(Integer id, String brand, int cost, int speed) {
         this.id = id;
         this.brand = brand;
         this.cost = cost;
+        this.speed = speed;
     }
 
     public Integer getId() {
@@ -56,5 +59,24 @@ public class Car implements Serializable {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Car{");
+        sb.append("id=").append(id);
+        sb.append(", brand='").append(brand).append('\'');
+        sb.append(", cost=").append(cost);
+        sb.append(", speed=").append(speed);
+        sb.append('}');
+        return sb.toString();
     }
 }
