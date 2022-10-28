@@ -61,7 +61,6 @@ public class CarController {
         return new ResponseEntity("Deleted with success.", HttpStatus.OK);
     }
 
-
     @PutMapping("/car/{id}")
     public ResponseEntity<Car> update(@PathVariable int id, @RequestBody CarRequest employeeDetails) {
         Car car = carServiceImpl.get(id);
