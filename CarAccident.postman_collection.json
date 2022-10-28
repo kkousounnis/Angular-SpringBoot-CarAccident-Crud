@@ -104,6 +104,33 @@
 				"url": "http://localhost:8080/api/mechanic"
 			},
 			"response": []
+		},
+		{
+			"name": "Delete Mechanic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/api/mechanic/1"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMechanics",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mechanic\": {\n        \"mechanicName\": \"Alexandros\",\n        \"carAccidents\": [\n            {\n                \"brand\": \"Audi\",\n                \"cost\": \"14000\",\n                \"speed\": 134\n            },\n            {\n                \"brand\": \"Mercedes\",\n                \"cost\": \"34000\",\n                \"speed\": 178\n            },\n            {\n                \"brand\": \"VolksWagen\",\n                \"cost\": \"27000\",\n                \"speed\": 89\n            },\n            {\n                \"brand\": \"Fiat\",\n                \"cost\": \"7000\",\n                \"speed\": 83\n            }\n\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mechanic/3"
+			},
+			"response": []
 		}
 	]
 }
