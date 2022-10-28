@@ -72,4 +72,5 @@ public class MechanicController {
         MechanicServiceImpl.save(mechanicDetails.getMechanic());
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
 }
