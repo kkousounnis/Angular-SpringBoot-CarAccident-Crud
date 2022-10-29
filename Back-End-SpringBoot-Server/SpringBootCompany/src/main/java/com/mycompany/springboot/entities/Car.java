@@ -1,6 +1,8 @@
 package com.mycompany.springboot.entities;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cars")
-public class Car implements Serializable {
+public class Car implements Serializable, Comparable<Car> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto increment
@@ -67,6 +69,11 @@ public class Car implements Serializable {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+    
+    @Override
+    public int compareTo(Car other) {
+        return this.cost - other.cost;
     }
 
     @Override
