@@ -2,10 +2,7 @@ package com.mycompany.springboot.controllers;
 
 import com.mycompany.springboot.entities.Car;
 import com.mycompany.springboot.entities.Mechanic;
-import com.mycompany.springboot.entities.dtos.responses.CarResponse;
-import com.mycompany.springboot.entities.dtos.responses.MechanicResponse;
 import com.mycompany.springboot.services.CarServiceImpl;
-import com.mycompany.springboot.services.MainServiceImpl;
 import com.mycompany.springboot.services.MechanicServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,12 +23,11 @@ public class MainController {
     @Autowired
     private CarServiceImpl carServiceImpl;
 
-    @Autowired
-    private MainServiceImpl mainServiceImpl;
 
     @GetMapping("/mechanic-cars-sorted")
     public HashMap<String, List<Car>> get() {
         List<Car> cars = carServiceImpl.get();
+        List<Car> carsWithSameMechanic = new ArrayList<>();
         /**
          * Sort cars with Comparator by Cost Field.
          * Related Github link
@@ -39,28 +35,30 @@ public class MainController {
          */
         Collections.sort(cars);
         HashMap<String, List<Car>> mechanicCarsSorted = new HashMap<>();
-
-        String tmp = "";
         for (Car car : cars) {
-
             String name = findStringName(car.getId());
-            List<Car> carsWithSameMechanic = new ArrayList<>();
-            if (name.equals(tmp)) {
-                carsWithSameMechanic.add(car);
-            }
-            mechanicCarsSorted.put()
-
+            /**
+             * Add in the car list if String name is the same.
+             * Hashmap add value inside list
+             * https://stackoverflow.com/questions/12134687/how-to-add-element-into-arraylist-in-hashmap
+             */
+            //To be implemented one mistake when name is the same.
+            mechanicCarsSorted.computeIfAbsent(name, k -> new ArrayList<>()).add(car);
 
         }
-        mainServiceImpl.createHashMap(cars);
-        return (null);
+
+        return (mechanicCarsSorted);
     }
 
     public String findStringName(int id) {
         for (Mechanic mechanic : mechanicServiceImpl.get()) {
             for (Car car : mechanic.getCarAccidents()) {
                 if (car.getId() == id) {
-                    return (mechanic.getMechanicName());
+                    /**
+                     * Return String with MechanicsID+MechanicName so even if full name is the same id is 
+                     * different.
+                     */
+                    return (mechanic.getMechanicId()+mechanic.getMechanicName());
                 }
             }
         }
